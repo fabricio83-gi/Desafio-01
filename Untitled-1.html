@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos de Informática</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: white;
+        }
+
+        header {
+            background: #7b2cbf;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 30px auto;
+        }
+
+        .produtos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .produto {
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(123, 44, 191, 0.5);
+        }
+
+        .produto img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .produto h3 {
+            color: #c77dff;
+            margin-bottom: 10px;
+        }
+
+        .produto p {
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 70px;
+            padding: 5px;
+            text-align: center;
+        }
+
+        button {
+            display: block;
+            margin: 30px auto;
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            background: #7b2cbf;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #9d4edd;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            line-height: 1.8;
+        }
+
+        footer {
+            background: #7b2cbf;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>💻 Produtos de Informática</h1>
+    <p>Os melhores produtos para você!</p>
+</header>
+
+<div class="container">
+
+    <div class="produtos">
+
+        <div class="produto">
+            <img src="https://images.unsplash.com/photo-1527814050087-3793815479db?w=400" alt="Mouse RGB">
+            <h3>Mouse RGB</h3>
+            <p>R$ 80,00</p>
+            <input type="number" id="qtd1" min="0" value="0">
+        </div>
+
+        <div class="produto">
+            <img src="https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=400" alt="Teclado Mecânico">
+            <h3>Teclado Mecânico</h3>
+            <p>R$ 220,00</p>
+            <input type="number" id="qtd2" min="0" value="0">
+        </div>
+
+        <div class="produto">
+            <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400" alt="Monitor Gamer">
+            <h3>Monitor Gamer</h3>
+            <p>R$ 180,00</p>
+            <input type="number" id="qtd3" min="0" value="0">
+        </div>
+
+    </div>
+
+    <button onclick="calcularCompra()">
+        Finalizar Compra
+    </button>
+
+    <div id="resultado"></div>
+
+</div>
+
+<footer>
+    <p>Aluno: Fabricio Augusto Silva Mendes - Trilhas 2026</p>
+</footer>
+
+<script>
+
+function calcularCompra() {
+
+    const mouse = 80;
+    const teclado = 220;
+    const monitor = 180;
+
+    const qtd1 = Number(document.getElementById("qtd1").value);
+    const qtd2 = Number(document.getElementById("qtd2").value);
+    const qtd3 = Number(document.getElementById("qtd3").value);
+
+    let total =
+        (qtd1 * mouse) +
+        (qtd2 * teclado) +
+        (qtd3 * monitor);
+
+    let totalItens = qtd1 + qtd2 + qtd3;
+
+    document.getElementById("resultado").innerHTML = `
+        <h2>Resumo da Compra</h2>
+        <p>Total de itens: ${totalItens}</p>
+        <p><strong>Valor Total: R$ ${total.toFixed(2)}</strong></p>
+    `;
+}
+
+</script>
+
+</body>
+</html>
